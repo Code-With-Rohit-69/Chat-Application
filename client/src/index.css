@@ -2,6 +2,13 @@
 
 @import "tailwindcss";
 
+html, body, #root {
+  height: 100%; /* Makes them fill the entire viewport height */
+  margin: 0; /* Removes default browser margin */
+  padding: 0; /* Removes default browser padding */
+  overflow: hidden; /* Prevents unwanted scrollbars on the entire page */
+}
+
 * {
   font-family: "Outfit", sans-serif;
 }

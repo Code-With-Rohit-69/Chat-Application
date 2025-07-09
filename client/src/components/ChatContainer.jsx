@@ -9,13 +9,15 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
 
   useEffect(() => {
     if (scrollEnd.current) {
-      scrollEnd.current.scrollIntoView({ behaviour: "smooth" });
+      scrollEnd.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, []);
+  }, [messagesDummyData]);
 
   return selectedUser ? (
     <div className="h-full overflow-scroll relative backdrop-blur-lg">
-      <div className="flex items-center gap-3 py-3 mx-4 border-b border-stone-500">
+      {/* header */}
+
+      <div className="flex items-center gap-3 py-4 mx-4 border-b border-stone-500 sticky top-0 bg-transparent z-30 backdrop-blur-xl ">
         <img src={assets.profile_martin} className="w-8 rounded-full" alt="" />
         <p className="flex-1 text-lg text-white flex items-center gap-2">
           Martin Johnson
@@ -32,7 +34,7 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
 
       {/* chat */}
 
-      <div className="flex flex-col h-[calc(100% - 120px)] overflow-y-scroll p-3 pb-6"> 
+      <div className="message-scroll-area flex-1 overflow-y-scroll px-3 pt-2 pb-2 ">
         {messagesDummyData.map((msg, index) => (
           <div
             className={`flex items-end gap-2 justify-end ${
@@ -79,7 +81,7 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
 
       {/* bottom area */}
 
-      <div className="absolute bottom-0 left-0 right-0 flex items-center gap-3 p-3">
+      <div className="sticky bottom-0 left-0 right-0 flex items-center gap-3 py-4 px-3 mt-2 bg-transparent backdrop-blur-xl">
         <div className="flex-1 flex items-center bg-gray-100/12 px-3 rounded-full">
           <input
             type="text"
@@ -95,13 +97,8 @@ const ChatContainer = ({ selectedUser, setSelectedUser }) => {
             />
           </label>
         </div>
-        <img
-          src={assets.send_button}
-          className="w-7 cursor-pointer"
-          alt=""
-        />
+        <img src={assets.send_button} className="w-7 cursor-pointer" alt="" />
       </div>
-
     </div>
   ) : (
     <div className="flex flex-col items-center justify-center gap-2 txet-gray-500 bg-white/10 max-md:hidden">

@@ -1,0 +1,16 @@
+.logo_big {
+  animation: bounce 1s infinite alternate ease-in-out;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(20px);
+  }
+}
