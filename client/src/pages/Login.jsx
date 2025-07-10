@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import assets from "../assets/assets.js";
 import "../components/animation.css";
+import { AuthContext } from "../../context/AuthContext.jsx";
 
 const Login = () => {
   const [currState, setCurrState] = useState("Sign up");
@@ -10,7 +11,9 @@ const Login = () => {
   const [bio, setBio] = useState("");
   const [isDataSubmitted, setIsDataSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const { login } = useContext(AuthContext);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (currState === "Sign up" && !isDataSubmitted) {
@@ -18,8 +21,13 @@ const Login = () => {
       return;
     }
 
-    try {
-    } catch (error) {}
+    if (currState === "Login") {
+      const credentials = { email, password };
+      await login(currState, credentials);
+    } else {
+      const credentials = { name: fullName, email, password, bio };
+      await login(currState, credentials);
+    }
   };
 
   return (
